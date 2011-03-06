@@ -1,0 +1,30 @@
+<% content_for :body_content_title do %>
+  <%= @campaign.title %>
+<% end %>
+
+<% content_for :body_content_left do %>
+  
+  <div>
+    <h3>Title</h3>
+    <%=raw @campaign.title %>
+  </div>
+  
+  <div>
+    <h3>Body</h3>
+    <%=raw @campaign.body %>
+  </div>
+  
+<% end %>
+
+<% content_for :body_content_right do %>
+  <h2><%= t('.other') %></h2>
+  <ul id="campaigns">
+    <% @campaigns.each do |campaign| %>
+      <li>
+        <%= link_to campaign.title, campaign_url(campaign) %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= render :partial => "/shared/content_page" %>

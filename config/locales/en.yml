@@ -1,0 +1,23 @@
+en:
+  shared:
+    admin:
+      image_picker:
+        image: image
+  plugins:
+    campaigns:
+      title: Campaigns
+  admin:
+    campaigns:
+      index:
+        create_new: Create a new Campaign
+        reorder: Reorder Campaigns
+        reorder_done: Done Reordering Campaigns
+        sorry_no_results: Sorry! There are no results found.
+        no_items_yet: There are no Campaigns yet. Click "Create a new Campaign" to add your first campaign.
+      campaign:
+        view_live: View this campaign live <br/><em>(opens in a new window)</em>
+        edit: Edit this campaign
+        delete: Remove this campaign forever
+  campaigns:
+    show:
+      other: Other Campaigns

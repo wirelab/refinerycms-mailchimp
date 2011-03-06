@@ -1,0 +1,67 @@
+<div id='actions'>
+  <ul>
+    <% if Admin::CampaignsController.searchable? %>
+      <li>
+        <%= render :partial => "/shared/admin/search",
+                    :locals => {
+                      :url => admin_campaigns_url
+                    } %>
+      </li>
+    <% end %>
+    <li>
+      <%= link_to t('.create_new'), new_admin_campaign_url,
+                   :class => "add_icon" %>
+    </li>
+  <% if !searching? and Campaign.count > 1 and Admin::CampaignsController.sortable? %>
+    <li>
+      <%= link_to t('.reorder', :what => "Campaigns"),
+                   admin_campaigns_url,
+                   :id => "reorder_action",
+                   :class => "reorder_icon" %>
+
+      <%= link_to t('.reorder_done', :what => "Campaigns"),
+                   admin_campaigns_url,
+                   :id => "reorder_action_done",
+                   :style => "display: none;",
+                   :class => "reorder_icon" %>
+    </li>
+  <% end %>
+  </ul>
+</div>
+<div id='records'>
+  <% if searching? %>
+    <h2><%= t('shared.admin.search.results_for', :query => params[:search]) %></h2>
+    <% if @campaigns.any? %>
+      <%= will_paginate @campaigns, :previous_label => '&laquo;', :next_label => '&raquo;' %>
+      <ul>
+        <%= render :partial => "campaign",
+                    :collection => @campaigns %>
+      </ul>
+      <%= will_paginate @campaigns, :previous_label => '&laquo;', :next_label => '&raquo;' %>
+    <% else %>
+      <p><%= t('shared.admin.search.no_results') %></p>
+    <% end %>
+  <% else %>
+    <% if @campaigns.any? %>
+      <%= will_paginate @campaigns,
+                         :previous_label => '&laquo;',
+                         :next_label => '&raquo;' %>
+
+      <%= render :partial => "sortable_list" %>
+
+      <%= will_paginate @campaigns,
+                         :previous_label => '&laquo;',
+                         :next_label => '&raquo;' %>
+    <% else %>
+      <p>
+        <strong>
+          <%= t('.no_items_yet') %>
+        </strong>
+      </p>
+    <% end %>
+  <% end %>
+</div>
+<%= render :partial => "/shared/admin/make_sortable",
+            :locals => {
+              :tree => false
+            } if !searching? and Campaign.count > 1 %>
