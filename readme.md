@@ -2,7 +2,7 @@
 
 ## How to use this engine with a Refinery CMS project
 
-If you have a Refinery app set up already, add this engine to your Gemfile in the "USER DEFINED" area:
+If you have a Refinery app set up already, add this engine to your Gemfile in the `USER DEFINED` area:
 
     gem 'refinerycms-mailchimp'
     
@@ -26,4 +26,4 @@ Then install the testing functionality with
     
     rails generate refinerycms_testing
     
-You can now run all engine specs and Cucumber features with 'rake', or run them separately with 'rake spec' and 'rake cucumber'.
+You can now run all engine specs and features with `rake`, or run them separately with `rake spec` and `rake cucumber`.
