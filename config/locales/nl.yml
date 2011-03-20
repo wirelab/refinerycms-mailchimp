@@ -1,6 +1,6 @@
 nl:
   plugins:
-    refinerycms_blog:
+    refinerycms_mailchimp:
       title: Campaigns
   admin:
     campaigns:
