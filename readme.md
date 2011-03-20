@@ -2,19 +2,21 @@
 
 ## How to use this engine with a Refinery CMS project
 
-If you have a Refinery app set up already, add this engine to your Gemfile in the `USER DEFINED` area:
-
-    gem 'refinerycms-mailchimp'
-    
-`bundle install` and you should be good to go.
-
-If you're starting from scratch, you'll want to install Refinery and create a new app:
+To set up a Refinery app from scratch, you'll need to install Refinery and create a new app:
 
     gem install refinerycms
     refinerycms new_project
     cd new_project
+
+Once you have a Refinery app created, add this engine to your Gemfile in the `USER DEFINED` area:
+
+    gem 'refinerycms-mailchimp'
     
-Then add the gem as described above.
+Then, from the command line:
+
+    bundle install
+    rails generate refinerycms_mailchimp
+    rake db:migrate
 
 ## How to run the test suite
 
