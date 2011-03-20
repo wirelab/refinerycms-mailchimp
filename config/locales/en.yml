@@ -4,7 +4,7 @@ en:
       image_picker:
         image: image
   plugins:
-    campaigns:
+    refinerycms_blog:
       title: Campaigns
   admin:
     campaigns:

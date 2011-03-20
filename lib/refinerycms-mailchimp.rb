@@ -1,7 +1,7 @@
 require 'refinery'
 
 module Refinery
-  module Campaigns
+  module Mailchimp
     class Engine < Rails::Engine
       initializer "static assets" do |app|
         app.middleware.insert_after ::ActionDispatch::Static, ::ActionDispatch::Static, "#{root}/public"

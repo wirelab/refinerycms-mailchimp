@@ -1,6 +1,6 @@
 nb:
   plugins:
-    campaigns:
+    refinerycms_blog:
       title: Campaigns
   admin:
     campaigns:
