@@ -2,7 +2,7 @@
   <ul id="campaigns">
     <% @campaigns.each do |campaign| %>
       <li>
-        <%= link_to campaign.title, campaign_url(campaign) %>
+        <%= link_to campaign.subject, campaign_url(campaign) %>
       </li>
     <% end %>
   </ul>

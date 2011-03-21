@@ -9,7 +9,7 @@ module NavigationHelpers
           new_admin_campaign_path
         else
           begin
-            if page_name =~ /the campaign titled "?([^\"]*)"?/ and (page = Campaign.find_by_title($1)).present?
+            if page_name =~ /the campaign subjectd "?([^\"]*)"?/ and (page = Campaign.find_by_subject($1)).present?
               self.url_for(page.url)
             else
               nil

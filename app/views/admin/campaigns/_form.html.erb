@@ -5,8 +5,8 @@
   } %>
   
   <div class='field'>
-    <%= f.label :title -%>
-    <%= f.text_field :title, :class => 'larger widest' -%>
+    <%= f.label :subject -%>
+    <%= f.text_field :subject, :class => 'larger widest' -%>
   </div>
   
   <div class='field'>
@@ -18,7 +18,7 @@
               :locals => {
                 :f => f,
                 :continue_editing => false,
-                :delete_title => t('admin.campaigns.campaign.delete'),
-                :delete_confirmation => t('shared.admin.delete.message', :title => @campaign.title)
+                :delete_subject => t('admin.campaigns.campaign.delete'),
+                :delete_confirmation => t('shared.admin.delete.message', :subject => @campaign.subject)
               } %>
 <% end -%>

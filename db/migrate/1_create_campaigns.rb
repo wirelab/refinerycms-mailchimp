@@ -1,10 +1,9 @@
 class CreateCampaigns < ActiveRecord::Migration
-
+  
   def self.up
     create_table :campaigns do |t|
-      t.string :title
+      t.string :subject, :mailchimp_campaign_id, :mailchimp_list_id, :mailchimp_template_id, :from_email, :from_name, :to_name
       t.text :body
-      t.integer :position
 
       t.timestamps
     end

@@ -1,12 +1,12 @@
-<% content_for :body_content_title do %>
-  <%= @campaign.title %>
+<% content_for :body_content_subject do %>
+  <%= @campaign.subject %>
 <% end %>
 
 <% content_for :body_content_left do %>
   
   <div>
     <h3>Title</h3>
-    <%=raw @campaign.title %>
+    <%=raw @campaign.subject %>
   </div>
   
   <div>
@@ -21,7 +21,7 @@
   <ul id="campaigns">
     <% @campaigns.each do |campaign| %>
       <li>
-        <%= link_to campaign.title, campaign_url(campaign) %>
+        <%= link_to campaign.subject, campaign_url(campaign) %>
       </li>
     <% end %>
   </ul>

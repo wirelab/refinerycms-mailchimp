@@ -7,17 +7,30 @@ describe Campaign do
       Factory.build(:campaign).should be_valid
     end
 
-    it "requires title" do
-      Factory.build(:campaign, :title => "").should_not be_valid
-    end
-    
-    it "requires a unique title" do
-      campaign = Factory.create(:campaign)
-      Factory.build(:campaign, :title => campaign.title).should_not be_valid
+    it "requires subject" do
+      Factory.build(:campaign, :subject => "").should_not be_valid
     end
     
     it "requires a body" do
       Factory.build(:campaign, :body => "").should_not be_valid
     end
+  end
+  
+  describe "integrating with Mailchimp" do
+    it "should save to mailchimp before create" do
+      campaign = Factory.build(:campaign)
+      campaign.mailchimp_campaign_id.should be_nil
+
+      Refinery::Mailchimp::API.should_receive(:new).and_return(mock('api', :create_campaign => 'abcdef'))
+      campaign.save
+      campaign.reload.mailchimp_cid.should == 'abcdef'
+    end
+    
+    
+    it "should not create if mailchimp create fails"
+    it "should update mailchimp before save"
+    it "should not save if mailchimp update fails"
+    it "should know if it's been sent or scheduled"
+    it "should know where it was sent to"
   end
 end

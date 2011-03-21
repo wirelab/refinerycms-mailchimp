@@ -4,12 +4,12 @@ User.find(:all).each do |user|
 end
 
 page = Page.create(
-  :title => "Campaigns",
+  :subject => "Campaigns",
   :link_url => "/campaigns",
   :deletable => false,
   :position => ((Page.maximum(:position, :conditions => {:parent_id => nil}) || -1)+1),
   :menu_match => "^/campaigns(\/|\/.+?|)$"
 )
 Page.default_parts.each do |default_page_part|
-  page.parts.create(:title => default_page_part, :body => nil)
+  page.parts.create(:subject => default_page_part, :body => nil)
 end
