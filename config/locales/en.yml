@@ -4,7 +4,7 @@ en:
       image_picker:
         image: image
   plugins:
-    refinerycms_mailchimp:
+    campaigns:
       title: Campaigns
   admin:
     campaigns:
