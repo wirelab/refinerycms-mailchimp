@@ -4,15 +4,12 @@
     <span class="preview">&nbsp;</span>
   </span>
   <span class='actions'>
-    <%= link_to refinery_icon_tag("application_go.png"), campaign_url(campaign),
-        :subject => t('.view_live'),
-        :target => "_blank" %>
     <%= link_to refinery_icon_tag("application_edit.png"), edit_admin_campaign_path(campaign),
          :subject => t('.edit') %>
     <%= link_to refinery_icon_tag("delete.png"), admin_campaign_path(campaign),
         :class => "cancel confirm-delete",
         :subject => t('.delete'),
-        :'data-confirm' => t('shared.admin.delete.message',
+        :'data-confirm' => t('admin.campaigns.campaign.delete_confirmation',
         :subject => campaign.subject
       ),
         :'data-method' => :delete %>

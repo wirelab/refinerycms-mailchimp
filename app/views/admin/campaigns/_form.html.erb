@@ -5,7 +5,10 @@
   } %>
   
   <div class='field'>
-    <%= f.label :subject -%>
+    <span class='label_with_help'>
+      <%= f.label :subject -%>
+      <%= refinery_help_tag t('.subject_help') %>
+    </span>
     <%= f.text_field :subject, :class => 'larger widest' -%>
   </div>
   
@@ -13,12 +16,62 @@
     <%= f.label :body -%>
     <%= f.text_area :body, :rows => 20, :class => 'wymeditor widest' -%>
   </div>
+
+  <div class="hemisquare">
+    <h2><%= t('.to_and_from') %></h2>
+    
+    <div class='field'>
+      <span class='label_with_help'>
+        <%= f.label :to_name, t('.to_name') -%>
+        <%= refinery_help_tag t('.to_name_help') %>
+      </span>
+      <%= f.text_field :to_name %>
+    </div>
+    
+    <div class='field'>
+      <span class='label_with_help'>
+        <%= f.label :from_name, t('.from_name') -%>
+        <%= refinery_help_tag t('.from_name_help') %>
+      </span>
+      <%= f.text_field :from_name %>
+    </div>
+    
+    <div class='field'>
+      <span class='label_with_help'>
+        <%= f.label :from_email, t('.from_email') -%>
+        <%= refinery_help_tag t('.from_email_help') %>
+      </span>
+      <%= f.text_field :from_email %>
+    </div>
+  </div>
+
+  <div class="hemisquare right_side">
+    <h2><%= t('.settings') %></h2>
+    
+    <div class='field'>
+      <span class='label_with_help'>
+        <%= f.label :mailchimp_list_id, t('.mailchimp_list_id') -%>
+        <%= refinery_help_tag t('.mailchimp_list_id_help') %>
+      </span>
+      <%= f.select :mailchimp_list_id, @lists.collect{ |list| [list['name'], list['id']] } %>
+    </div>
+    
+    <div class='field'>
+      <span class='label_with_help'>
+        <%= f.label :mailchimp_template_id, t('.mailchimp_template_id') -%>
+        <%= refinery_help_tag t('.mailchimp_template_id_help') %>
+      </span>
+      <%= f.select :mailchimp_template_id, @templates.collect{ |template| [template['name'], template['id']] }, :include_blank => true %>
+    </div>
+  </div>
   
+  <div class="clearfix"></div>
+
   <%= render :partial => "/shared/admin/form_actions",
               :locals => {
                 :f => f,
                 :continue_editing => false,
                 :delete_subject => t('admin.campaigns.campaign.delete'),
-                :delete_confirmation => t('shared.admin.delete.message', :subject => @campaign.subject)
+                :delete_confirmation => t('admin.campaigns.campaign.delete_confirmation', :subject => @campaign.subject)
               } %>
 <% end -%>

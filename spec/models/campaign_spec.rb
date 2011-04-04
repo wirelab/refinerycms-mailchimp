@@ -23,11 +23,10 @@ describe Campaign do
 
       Refinery::Mailchimp::API.should_receive(:new).and_return(mock('api', :create_campaign => 'abcdef'))
       campaign.save
-      campaign.reload.mailchimp_cid.should == 'abcdef'
+      campaign.reload.mailchimp_campaign_id.should == 'abcdef'
     end
     
-    
-    it "should not create if mailchimp create fails"
+    it "should not create and add error if mailchimp create fails"
     it "should update mailchimp before save"
     it "should not save if mailchimp update fails"
     it "should know if it's been sent or scheduled"

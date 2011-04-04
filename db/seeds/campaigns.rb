@@ -3,13 +3,8 @@ User.find(:all).each do |user|
                       :position => (user.plugins.maximum(:position) || -1) +1)
 end
 
-page = Page.create(
-  :title => "Campaigns",
-  :link_url => "/campaigns",
-  :deletable => false,
-  :position => ((Page.maximum(:position, :conditions => {:parent_id => nil}) || -1)+1),
-  :menu_match => "^/campaigns(\/|\/.+?|)$"
-)
-Page.default_parts.each do |default_page_part|
-  page.parts.create(:title => default_page_part, :body => nil)
-end
+RefinerySetting.create :name => Refinery::Mailchimp::API::KeySetting[:name],              :value => Refinery::Mailchimp::API::KeySetting[:default],              :restricted => true
+RefinerySetting.create :name => Refinery::Mailchimp::API::DefaultFromNameSetting[:name],  :value => Refinery::Mailchimp::API::DefaultFromNameSetting[:default],  :restricted => true
+RefinerySetting.create :name => Refinery::Mailchimp::API::DefaultFromEmailSetting[:name], :value => Refinery::Mailchimp::API::DefaultFromEmailSetting[:default], :restricted => true
+RefinerySetting.create :name => Refinery::Mailchimp::API::DefaultToNameSetting[:name],    :value => Refinery::Mailchimp::API::DefaultToNameSetting[:default],    :restricted => true
+

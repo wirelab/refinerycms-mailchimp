@@ -17,13 +17,16 @@ module Refinery
     end
     
     class API < Hominid::API
-      KeySetting = { :name => "Mailchimp API Key", :default => "Set me!" }
-      class NoAPIKeyError < StandardError; end
+      KeySetting = { :name => "mailchimp_api_key", :default => "Set me!" }
+      DefaultFromNameSetting = { :name => "mailchimp_default_from_name", :default => "" }
+      DefaultFromEmailSetting = { :name => "mailchimp_default_from_email", :default => "" }
+      DefaultToNameSetting = { :name => "mailchimp_default_to_name", :default => "" }
+      
       class BadAPIKeyError < StandardError; end
       
       def initialize
-        api_key = RefinerySetting.find_or_set KeySetting[:name], KeySetting[:default]
-        raise NoAPIKeyError if api_key == KeySetting[:default]
+        api_key = RefinerySetting.get_or_set KeySetting[:name], KeySetting[:default]
+        raise BadAPIKeyError if api_key.blank? || api_key == KeySetting[:default]
         
         begin
           super api_key
