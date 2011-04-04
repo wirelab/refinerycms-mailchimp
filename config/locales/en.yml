@@ -29,6 +29,7 @@ en:
         edit: Edit this campaign
         delete: Remove this campaign forever
         delete_confirmation: "Are you sure you want to remove '%{subject}'?"
+        mailchimp_error: "Could not save to Mailchimp! Please make sure your API key is right and that you are using a good 'From' email address."
       form:
         to_and_from: To and From
         settings: Settings

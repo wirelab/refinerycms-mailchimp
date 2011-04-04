@@ -2,9 +2,9 @@ class Admin::CampaignsController < Admin::BaseController
   rescue_from Refinery::Mailchimp::API::BadAPIKeyError, :with => :need_api_key
   rescue_from Hominid::APIError, :with => :need_api_key
   
-  before_filter :get_lists_and_templates, :only => [:new, :create]
+  before_filter :get_mailchimp_assets, :except => :index
   
-  crudify :campaign, :order => "updated_at desc", :sortable => false
+  crudify :campaign, :order => "updated_at desc", :sortable => false, :title_attribute => :subject
   
   def new
     @campaign = Campaign.new :to_name => RefinerySetting.get_or_set(Refinery::Mailchimp::API::DefaultToNameSetting[:name], Refinery::Mailchimp::API::DefaultToNameSetting[:default]),
@@ -20,7 +20,7 @@ protected
     redirect_to admin_campaigns_path
   end
   
-  def get_lists_and_templates
+  def get_mailchimp_assets
     @lists = Refinery::Mailchimp::API.new.lists['data']
     @templates = Refinery::Mailchimp::API.new.templates['user']
   end

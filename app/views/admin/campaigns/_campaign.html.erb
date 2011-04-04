@@ -9,9 +9,8 @@
     <%= link_to refinery_icon_tag("delete.png"), admin_campaign_path(campaign),
         :class => "cancel confirm-delete",
         :subject => t('.delete'),
-        :'data-confirm' => t('admin.campaigns.campaign.delete_confirmation',
-        :subject => campaign.subject
-      ),
+        :'data-confirm' => t('admin.campaigns.campaign.delete_confirmation', :subject => campaign.subject),
         :'data-method' => :delete %>
+    <%= link_to "Send", "#" %>
   </span>
 </li>

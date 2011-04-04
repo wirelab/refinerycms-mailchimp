@@ -19,7 +19,7 @@ describe Refinery::Mailchimp::API do
       begin
         client = Refinery::Mailchimp::API.new
         fail
-      rescue Refinery::Mailchimp::API::NoAPIKeyError
+      rescue Refinery::Mailchimp::API::BadAPIKeyError
       end
     end
     
