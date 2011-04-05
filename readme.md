@@ -26,10 +26,10 @@ You'll need to set up your Mailchimp API key in the Settings area.  Get your API
 
 All available settings are:
 
-* *`mailchimp_api_key`*: The API key of the Mailchimp account you wish to send campaigns from.
-* *`mailchimp_default_to_name`*: The default To: name recipients will see (not email address). This can be changed for each campaign.
-* *`mailchimp_default_from_name`*: "The default From: name for your campaign message (not an email address). This can be changed for each campaign.
-* *`mailchimp_default_from_email`*: "The default From: email address for your campaign message. This can be changed for each campaign.
+* `mailchimp_api_key`  The API key of the Mailchimp account you wish to send campaigns from.
+* `mailchimp_default_to_name`  The default To: name recipients will see (not email address). This can be changed for each campaign.
+* `mailchimp_default_from_name`  The default From: name for your campaign message (not an email address). This can be changed for each campaign.
+* `mailchimp_default_from_email`  The default From: email address for your campaign message. This can be changed for each campaign.
 
 ## How to run the test suite
 
