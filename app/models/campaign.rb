@@ -100,6 +100,6 @@ protected
   end
   
   def content_key
-    mailchimp_template_id ? :html_MAIN : :html
+    mailchimp_template_id.blank? ? :html : :html_MAIN
   end
 end
