@@ -63,6 +63,14 @@
       </span>
       <%= f.select :mailchimp_template_id, @templates.collect{ |template| [template['name'], template['id']] }, :include_blank => true %>
     </div>
+    
+    <div class='field'>
+      <span class='label_with_help'>
+        <%= f.label :auto_tweet, t('.auto_tweet') -%>
+        <%= refinery_help_tag t('.auto_tweet_help') %>
+      </span>
+      <%= f.check_box :auto_tweet %>
+    </div>
   </div>
   
   <div class="clearfix"></div>

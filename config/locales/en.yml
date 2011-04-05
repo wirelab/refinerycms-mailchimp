@@ -53,6 +53,8 @@ en:
         from_name_help: "The From: name for your campaign message (not an email address). You can change the default in Settings."
         from_email: From Email
         from_email_help: "The From: email address for your campaign message. You can change the default in Settings."
+        auto_tweet: Auto Tweet
+        auto_tweet_help: Automatically tweet about this campaign when sent. Requires setting up Twitter from Mailchimp.
   campaigns:
     show:
       other: Other Campaigns

@@ -57,7 +57,7 @@ class Campaign < ActiveRecord::Base
 protected
 
   def create_mailchimp_campaign
-    options = { :subject => subject, :from_email => from_email, :from_name => from_name, :to_name => to_name, :list_id => mailchimp_list_id } #:auto_tweet => auto_tweet
+    options = { :subject => subject, :from_email => from_email, :from_name => from_name, :to_name => to_name, :list_id => mailchimp_list_id, :auto_tweet => auto_tweet }
     options[:template_id] = mailchimp_template_id unless mailchimp_template_id.blank?
     # options[:analytics] = { :google => google_analytics } unless google_analytics.blank?
     
@@ -75,7 +75,7 @@ protected
     
     client = Refinery::Mailchimp::API.new
     
-    options = {:title => :subject, :from_email => :from_email, :from_name => :from_name, :to_name => :to_name, :list_id => :mailchimp_list_id, :template_id => :mailchimp_template_id, :content => :body}
+    options = {:title => :subject, :from_email => :from_email, :from_name => :from_name, :to_name => :to_name, :list_id => :mailchimp_list_id, :template_id => :mailchimp_template_id, :content => :body, :auto_tweet => :auto_tweet }
     options.each_pair do |option_name, attribute|
       if changed.include?(attribute.to_s)
         success = client.campaign_update mailchimp_campaign_id, option_name, (option_name == :content ? { content_key => body } : self.send(attribute))

@@ -5,6 +5,7 @@ class CreateCampaigns < ActiveRecord::Migration
       t.string :subject, :mailchimp_campaign_id, :mailchimp_list_id, :mailchimp_template_id, :from_email, :from_name, :to_name
       t.text :body
       t.datetime :sent_at, :scheduled_at
+      t.boolean :auto_tweet, :default => false
       t.timestamps
     end
 
