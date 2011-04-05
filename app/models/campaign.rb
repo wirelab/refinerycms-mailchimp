@@ -7,9 +7,52 @@ class Campaign < ActiveRecord::Base
   before_save :update_mailchimp_campaign
   before_create :create_mailchimp_campaign
   
+  def sent?
+    !!sent_at || !!scheduled_at && scheduled_at <= Time.now
+  end
+  
+  def scheduled?
+    !!scheduled_at && scheduled_at > Time.now
+  end
+  
+  def sent
+    sent_at || scheduled_at
+  end
+  
+  def send_test_to(*emails)
+    Refinery::Mailchimp::API.new.campaign_send_test mailchimp_campaign_id, emails
+  rescue Hominid::APIError
+    false
+  end
+  
+  def send_now
+    success = Refinery::Mailchimp::API.new.campaign_send_now mailchimp_campaign_id
+    self.update_attribute :sent_at, Time.now if success
+    success
+  rescue Hominid::APIError
+    false
+  end
+  
+  def schedule_for(datetime)
+    success = Refinery::Mailchimp::API.new.campaign_schedule mailchimp_campaign_id, datetime.utc.strftime("%Y-%m-%d %H:%M:%S")
+    self.update_attribute :scheduled_at, datetime if success
+    success
+  rescue Hominid::APIError
+    false
+  end
+  
+  def unschedule
+    success = Refinery::Mailchimp::API.new.campaign_unschedule mailchimp_campaign_id
+    self.update_attribute :scheduled_at, nil if success
+    success
+  rescue Hominid::APIError
+    false
+  end
+  
   def google_analytics
     RefinerySetting.find_or_set Refinery::Mailchimp::API::GoogleAnalyticsSetting[:name], Refinery::Mailchimp::API::GoogleAnalyticsSetting[:default]
   end
+  
 protected
 
   def create_mailchimp_campaign

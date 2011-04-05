@@ -1,16 +1,22 @@
 <li class='clearfix record <%= cycle("on", "on-hover") %>' id="<%= dom_id(campaign) -%>">
   <span class='subject'>
     <%= campaign.subject %>
-    <span class="preview">&nbsp;</span>
+    
+    <% if campaign.sent? %>
+      <span class="preview" title="<%= campaign.sent %>">sent <%= distance_of_time_in_words_to_now(campaign.sent) %> ago</span>
+    <% elsif campaign.scheduled? %>
+      <span class="preview" title="<%= campaign.scheduled_at %>">sending in <%= distance_of_time_in_words_to_now(campaign.scheduled_at) %></span>
+    <% end %>
   </span>
   <span class='actions'>
     <%= link_to refinery_icon_tag("application_edit.png"), edit_admin_campaign_path(campaign),
          :subject => t('.edit') %>
+    <%= link_to refinery_icon_tag("email_go.png"), send_options_admin_campaign_path(campaign, :dialog => true, :width => 725, :height => 525),
+        :title => t('send_dialog', :scope => 'admin.campaigns.campaign') %>
     <%= link_to refinery_icon_tag("delete.png"), admin_campaign_path(campaign),
         :class => "cancel confirm-delete",
         :subject => t('.delete'),
         :'data-confirm' => t('admin.campaigns.campaign.delete_confirmation', :subject => campaign.subject),
         :'data-method' => :delete %>
-    <%= link_to "Send", "#" %>
   </span>
 </li>

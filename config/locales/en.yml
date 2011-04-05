@@ -30,6 +30,15 @@ en:
         delete: Remove this campaign forever
         delete_confirmation: "Are you sure you want to remove '%{subject}'?"
         mailchimp_error: "Could not save to Mailchimp! Please make sure your API key is right and that you are using a good 'From' email address."
+        send_dialog: "Send, schedule, or test this campaign"
+        send_test_success: Test email successfully sent to %{email}.
+        send_test_failure: Test email could not be sent to %{email}. Please check the email address.
+        send_now_success: The campaign was successfully sent!
+        send_now_failure: The campaign could not be sent. Please check in Mailchimp to make sure everything is ok.
+        schedule_success: The campaign was successfully scheduled.
+        schedule_failure: The campaign could not be scheduled. Please check in Mailchimp to make sure everything is ok.
+        unschedule_success: The campaign was successfully unscheduled.
+        unschedule_failure: The campaign could not be unscheduled. Please check in Mailchimp to make sure everything is ok.
       form:
         to_and_from: To and From
         settings: Settings

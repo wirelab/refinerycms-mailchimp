@@ -12,20 +12,6 @@
       <%= link_to t('.create_new'), new_admin_campaign_url,
                    :class => "add_icon" %>
     </li>
-  <% if !searching? and Campaign.count > 1 and Admin::CampaignsController.sortable? %>
-    <li>
-      <%= link_to t('.reorder', :what => "Campaigns"),
-                   admin_campaigns_url,
-                   :id => "reorder_action",
-                   :class => "reorder_icon" %>
-
-      <%= link_to t('.reorder_done', :what => "Campaigns"),
-                   admin_campaigns_url,
-                   :id => "reorder_action_done",
-                   :style => "display: none;",
-                   :class => "reorder_icon" %>
-    </li>
-  <% end %>
   </ul>
 </div>
 <div id='records'>
@@ -61,7 +47,3 @@
     <% end %>
   <% end %>
 </div>
-<%= render :partial => "/shared/admin/make_sortable",
-            :locals => {
-              :tree => false
-            } if !searching? and Campaign.count > 1 %>
