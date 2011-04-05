@@ -22,7 +22,7 @@ Then, from the command line:
     
 ## Settings
 
-You'll need to set up your Mailchimp API key in the Settings area.  Get your API key here:  https://admin.mailchimp.com/account/api-key-popup
+You'll need to set up your Mailchimp API key in the Settings area.  [Get your API key here.](https://admin.mailchimp.com/account/api-key-popup)
 
 All available settings are:
 
@@ -30,6 +30,10 @@ All available settings are:
 * `mailchimp_default_to_name`  The default To: name recipients will see (not email address). This can be changed for each campaign.
 * `mailchimp_default_from_name`  The default From: name for your campaign message (not an email address). This can be changed for each campaign.
 * `mailchimp_default_from_email`  The default From: email address for your campaign message. This can be changed for each campaign.
+
+## Using Templates
+
+This plugin currently only supports one editable text area per campaign.  If you use a template, the body will replace the template's MAIN area (see [the Mailchimp docs on editable content areas](http://kb.mailchimp.com/article/template-language-creating-editable-content-areas)).
 
 ## How to run the test suite
 

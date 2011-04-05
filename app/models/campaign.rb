@@ -61,7 +61,7 @@ protected
     # options[:analytics] = { :google => google_analytics } unless google_analytics.blank?
     
     self.mailchimp_campaign_id = begin
-      Refinery::Mailchimp::API.new.campaign_create 'regular', options, { :html => body }
+      Refinery::Mailchimp::API.new.campaign_create 'regular', options, { content_key => body }
     rescue Hominid::APIError
       nil
     end
@@ -77,7 +77,7 @@ protected
     options = {:title => :subject, :from_email => :from_email, :from_name => :from_name, :to_name => :to_name, :list_id => :mailchimp_list_id, :template_id => :mailchimp_template_id, :content => :body}
     options.each_pair do |option_name, attribute|
       if changed.include?(attribute.to_s)
-        success = client.campaign_update mailchimp_campaign_id, option_name, (option_name == :content ? { :html => body } : self.send(attribute))
+        success = client.campaign_update mailchimp_campaign_id, option_name, (option_name == :content ? { content_key => body } : self.send(attribute))
         return halt_with_mailchimp_error unless success
       end
     end
@@ -86,5 +86,9 @@ protected
   def halt_with_mailchimp_error
     self.errors.add :base, I18n.t('admin.campaigns.campaign.mailchimp_error')
     return false
+  end
+  
+  def content_key
+    mailchimp_template_id ? :html_MAIN : :html
   end
 end
