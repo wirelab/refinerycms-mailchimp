@@ -6,6 +6,7 @@ class Campaign < ActiveRecord::Base
   
   before_save :update_mailchimp_campaign
   before_create :create_mailchimp_campaign
+  before_destroy :delete_mailchimp_campaign
   
   def sent?
     !!sent_at || !!scheduled_at && scheduled_at <= Time.now
@@ -56,7 +57,7 @@ class Campaign < ActiveRecord::Base
 protected
 
   def create_mailchimp_campaign
-    options = { :subject => subject, :from_email => from_email, :from_name => from_name, :to_name => to_name, :list_id => mailchimp_list_id, :generate_text => true } #:auto_tweet => auto_tweet
+    options = { :subject => subject, :from_email => from_email, :from_name => from_name, :to_name => to_name, :list_id => mailchimp_list_id } #:auto_tweet => auto_tweet
     options[:template_id] = mailchimp_template_id unless mailchimp_template_id.blank?
     # options[:analytics] = { :google => google_analytics } unless google_analytics.blank?
     
@@ -81,6 +82,16 @@ protected
         return halt_with_mailchimp_error unless success
       end
     end
+  end
+  
+  def delete_mailchimp_campaign
+    success = begin
+      Refinery::Mailchimp::API.new.campaign_delete mailchimp_campaign_id
+    rescue Hominid::APIError
+      nil
+    end
+    
+    return halt_with_mailchimp_error unless success
   end
 
   def halt_with_mailchimp_error
