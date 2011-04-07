@@ -7,6 +7,7 @@ class Admin::CampaignsController < Admin::BaseController
   
   before_filter :get_mailchimp_assets, :except => :index
   before_filter :find_campaign, :except => [:index, :new, :create]
+  before_filter :fully_qualify_links, :only => [:create, :update]
   
   def new
     @campaign = Campaign.new :to_name => RefinerySetting.get_or_set(Refinery::Mailchimp::API::DefaultToNameSetting[:name], Refinery::Mailchimp::API::DefaultToNameSetting[:default]),
@@ -67,6 +68,10 @@ protected
     msg += " <a href=\"#{edit_admin_refinery_setting_path(RefinerySetting.find_by_name(Refinery::Mailchimp::API::KeySetting[:name]))}\" style=\"display:inline\">#{t('admin.campaigns.index.set_api_link')}</a>"
     flash[:alert] = msg.html_safe
     redirect_to admin_campaigns_path
+  end
+  
+  def fully_qualify_links
+    params[:campaign][:body].gsub!(/(href|src)="\//i, %|\\1="#{root_url}|)
   end
   
   def get_mailchimp_assets
