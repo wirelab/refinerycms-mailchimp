@@ -4,7 +4,7 @@ Gem::Specification.new do |s|
   s.author            = 'Ian Terrell'
   s.email             = 'ian.terrell@gmail.com'
   s.homepage          = 'https://github.com/ianterrell/refinerycms-mailchimp'
-  s.version           = '0.0.1'
+  s.version           = '0.0.2'
   s.description       = 'Ruby on Rails Mailchimp engine for Refinery CMS.  Manage your campaigns right from the admin!'
   s.date              = '2011-04-04'
   s.summary           = 'Ruby on Rails Mailchimp engine for Refinery CMS'
