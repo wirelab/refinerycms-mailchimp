@@ -1,15 +1,15 @@
 <div id='actions'>
   <ul>
-    <% if Admin::CampaignsController.searchable? %>
+    <% if ::Refinery::Mailchimp::Admin::CampaignsController.searchable? %>
       <li>
-        <%= render :partial => "/shared/admin/search",
+        <%= render :partial => "/refinery/admin/search",
                     :locals => {
-                      :url => admin_campaigns_url
+                      :url => refinery.mailchimp_admin_campaigns_url
                     } %>
       </li>
     <% end %>
     <li>
-      <%= link_to t('.create_new'), new_admin_campaign_url,
+      <%= link_to t('.create_new'), refinery.new_mailchimp_admin_campaign_url,
                    :class => "add_icon" %>
     </li>
   </ul>
@@ -25,7 +25,7 @@
       </ul>
       <%= will_paginate @campaigns, :previous_label => '&laquo;', :next_label => '&raquo;' %>
     <% else %>
-      <p><%= t('shared.admin.search.no_results') %></p>
+      <p><%= t('.search.no_results') %></p>
     <% end %>
   <% else %>
     <% if @campaigns.any? %>
