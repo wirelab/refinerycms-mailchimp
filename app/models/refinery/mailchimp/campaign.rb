@@ -5,7 +5,7 @@ module Refinery
 
       self.table_name = 'refinery_mailchimp_campaigns'
 
-      attr_accessible :to_name, :from_name, :from_email, :subject, :body, :mailchimp_list_id
+      attr_accessible :to_name, :from_name, :from_email, :subject, :body, :mailchimp_list_id, :mailchimp_template_id, :auto_tweet
 
       validates_presence_of :subject, :body, :mailchimp_list_id, :from_email, :from_name, :to_name
 
