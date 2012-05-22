@@ -1,60 +1,61 @@
 en:
-  shared:
+  refinery:
+    shared:
+      admin:
+        image_picker:
+          image: image
+    plugins:
+      refinery-mailchimp:
+        title: Campaigns
     admin:
-      image_picker:
-        image: image
-  plugins:
+      refinery_settings:
+        form:
+          help:
+            mailchimp_api_key: "Get your API key from your Mailchimp dashboard by choosing 'Account' and then 'API Keys & Info.'"
+            mailchimp_default_to_name: "The default To: name recipients will see (not email address). This can be changed for each campaign."
+            mailchimp_default_from_name: "The default From: name for your campaign message (not an email address). This can be changed for each campaign."
+            mailchimp_default_from_email: "The default From: email address for your campaign message. This can be changed for each campaign."
+            mailchimp_admin_base_url: The base URL of your Mailchimp admin area. This is used to generate links to your campaigns for convenience. Only change it if you know what you're doing.
+      campaigns:
+        index:
+          create_new: Create a new Campaign
+          reorder: Reorder Campaigns
+          reorder_done: Done Reordering Campaigns
+          sorry_no_results: Sorry! There are no results found.
+          no_items_yet: There are no Campaigns yet. Click "Create a new Campaign" to add your first campaign.
+          set_api_key: You must set a valid Mailchimp API key.
+          set_api_link: Click here to update your key.
+        campaign:
+          view_live: View this campaign live <br/><em>(opens in a new window)</em>
+          edit: Edit this campaign
+          delete: Remove this campaign forever
+          delete_confirmation: "Are you sure you want to remove '%{subject}'?"
+          mailchimp_error: "Could not save to Mailchimp! Please make sure your API key is right and that you are using a good 'From' email address."
+          send_dialog: "Send, schedule, or test this campaign"
+          send_test_success: Test email successfully sent to %{email}.
+          send_test_failure: Test email could not be sent to %{email}. Please check the email address.
+          send_now_success: The campaign was successfully sent!
+          send_now_failure: The campaign could not be sent. Please check in Mailchimp to make sure everything is ok.
+          schedule_success: The campaign was successfully scheduled.
+          schedule_failure: The campaign could not be scheduled. Please check in Mailchimp to make sure everything is ok.
+          unschedule_success: The campaign was successfully unscheduled.
+          unschedule_failure: The campaign could not be unscheduled. Please check in Mailchimp to make sure everything is ok.
+        form:
+          to_and_from: To and From
+          settings: Settings
+          subject_help: The subject line that will be used for the campaign emails.
+          mailchimp_list_id: Mailing List
+          mailchimp_list_id_help: The mailing list to send this campaign to. These are managed in Mailchimp.
+          mailchimp_template_id: Template
+          mailchimp_template_id_help: The HTML template to use for this campaign. These are managed in Mailchimp.
+          to_name: To Name
+          to_name_help: "The To: name recipients will see (not email address). You can change the default in Settings."
+          from_name: From Name
+          from_name_help: "The From: name for your campaign message (not an email address). You can change the default in Settings."
+          from_email: From Email
+          from_email_help: "The From: email address for your campaign message. You can change the default in Settings."
+          auto_tweet: Auto Tweet
+          auto_tweet_help: Automatically tweet about this campaign when sent. Requires setting up Twitter from Mailchimp.
     campaigns:
-      title: Campaigns
-  admin:
-    refinery_settings:
-      form:
-        help:
-          mailchimp_api_key: "Get your API key from your Mailchimp dashboard by choosing 'Account' and then 'API Keys & Info.'"
-          mailchimp_default_to_name: "The default To: name recipients will see (not email address). This can be changed for each campaign."
-          mailchimp_default_from_name: "The default From: name for your campaign message (not an email address). This can be changed for each campaign."
-          mailchimp_default_from_email: "The default From: email address for your campaign message. This can be changed for each campaign."
-          mailchimp_admin_base_url: The base URL of your Mailchimp admin area. This is used to generate links to your campaigns for convenience. Only change it if you know what you're doing.
-    campaigns:
-      index:
-        create_new: Create a new Campaign
-        reorder: Reorder Campaigns
-        reorder_done: Done Reordering Campaigns
-        sorry_no_results: Sorry! There are no results found.
-        no_items_yet: There are no Campaigns yet. Click "Create a new Campaign" to add your first campaign.
-        set_api_key: You must set a valid Mailchimp API key.
-        set_api_link: Click here to update your key.
-      campaign:
-        view_live: View this campaign live <br/><em>(opens in a new window)</em>
-        edit: Edit this campaign
-        delete: Remove this campaign forever
-        delete_confirmation: "Are you sure you want to remove '%{subject}'?"
-        mailchimp_error: "Could not save to Mailchimp! Please make sure your API key is right and that you are using a good 'From' email address."
-        send_dialog: "Send, schedule, or test this campaign"
-        send_test_success: Test email successfully sent to %{email}.
-        send_test_failure: Test email could not be sent to %{email}. Please check the email address.
-        send_now_success: The campaign was successfully sent!
-        send_now_failure: The campaign could not be sent. Please check in Mailchimp to make sure everything is ok.
-        schedule_success: The campaign was successfully scheduled.
-        schedule_failure: The campaign could not be scheduled. Please check in Mailchimp to make sure everything is ok.
-        unschedule_success: The campaign was successfully unscheduled.
-        unschedule_failure: The campaign could not be unscheduled. Please check in Mailchimp to make sure everything is ok.
-      form:
-        to_and_from: To and From
-        settings: Settings
-        subject_help: The subject line that will be used for the campaign emails.
-        mailchimp_list_id: Mailing List
-        mailchimp_list_id_help: The mailing list to send this campaign to. These are managed in Mailchimp.
-        mailchimp_template_id: Template
-        mailchimp_template_id_help: The HTML template to use for this campaign. These are managed in Mailchimp.
-        to_name: To Name
-        to_name_help: "The To: name recipients will see (not email address). You can change the default in Settings."
-        from_name: From Name
-        from_name_help: "The From: name for your campaign message (not an email address). You can change the default in Settings."
-        from_email: From Email
-        from_email_help: "The From: email address for your campaign message. You can change the default in Settings."
-        auto_tweet: Auto Tweet
-        auto_tweet_help: Automatically tweet about this campaign when sent. Requires setting up Twitter from Mailchimp.
-  campaigns:
-    show:
-      other: Other Campaigns
+      show:
+        other: Other Campaigns

@@ -18,7 +18,6 @@ module Refinery
             :class_name => :'refinery/mailchimp/campaign',
             :title => 'subject'
           }
-
         end
       end
 
