@@ -1,7 +1,7 @@
 require 'refinerycms-core'
 
 module Refinery
-  autoload :MailchimpGenerator, 'generators/refinery/mailchimp_generator'
+  autoload :MailchimpGenerator, 'generators/refinery/mailchimp/mailchimp_generator'
 
   module Mailchimp
     require 'refinery/mailchimp/engine'
