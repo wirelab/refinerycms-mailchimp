@@ -38,6 +38,8 @@ en:
               unschedule_success: The campaign was successfully unscheduled.
               unschedule_failure: The campaign could not be unscheduled. Please check in Mailchimp to make sure everything is ok.
             form:
+              subject: Subject
+              body: Body
               to_and_from: To and From
               settings: Settings
               subject_help: The subject line that will be used for the campaign emails.
