@@ -1,5 +1,11 @@
 module Refinery
   class MailchimpGenerator < Rails::Generators::Base
+    source_root File.expand_path('../templates', __FILE__)
+
+    def generate_mailchimp_initializer
+      template 'config/initializers/refinery/mailchimp.rb.erb', File.join(destination_root, 'config', 'initializers', 'refinery', 'mailchimp.rb')
+    end
+
     def rake_db
       rake("refinery_mailchimp:install:migrations")
     end

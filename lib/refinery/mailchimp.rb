@@ -1,10 +1,11 @@
 require 'refinerycms-core'
 
 module Refinery
-  autoload :MailchimpGenerator, 'generators/refinery/mailchimp_generator'
+  autoload :MailchimpGenerator, 'generators/refinery/mailchimp/mailchimp_generator'
 
   module Mailchimp
     require 'refinery/mailchimp/engine'
+    require 'refinery/mailchimp/configuration'
 
     class << self
       attr_writer :root
