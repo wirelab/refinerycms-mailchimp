@@ -1,4 +1,4 @@
-[![Build Status](https://secure.travis-ci.org/Wirelab/refinerycms-mailchimp.png?branch=master)](http://travis-ci.org/Wirelab/refinerycms-mailchimp)
+[![Build Status](https://secure.travis-ci.org/Wirelab/refinerycms-mailchimp.png?branch=feature/2.0.0)](http://travis-ci.org/Wirelab/refinerycms-mailchimp)
 
 # Mailchimp engine for Refinery CMS
 
