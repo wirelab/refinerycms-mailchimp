@@ -100,7 +100,7 @@ module Refinery
       end
 
       def halt_with_mailchimp_error
-        self.errors.add :base, I18n.t('admin.campaigns.campaign.mailchimp_error')
+        self.errors.add :base, I18n.t('refinery.admin.campaigns.campaign.mailchimp_error')
         return false
       end
 
