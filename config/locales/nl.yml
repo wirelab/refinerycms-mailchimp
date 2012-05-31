@@ -3,18 +3,19 @@ nl:
     plugins:
       refinery-mailchimp:
         title: Campaigns
-    admin:
-      campaigns:
-        index:
-          create_new: Maak een nieuwe Campaign
-          reorder: Wijzig de volgorde van de Campaigns
-          reorder_done: Klaar met het wijzingen van de volgorde van de Campaigns
-          sorry_no_results: Helaas! Er zijn geen resultaten gevonden.
-          no_items_yet: Er zijn nog geen Campaigns. Druk op 'Maak een nieuwe Campaign' om de eerste aan te maken.
-        campaign:
-          view_live: Bekijk deze campaign op de website <br/><em>(opent een nieuw venster)</em>
-          edit: Bewerk deze campaign
-          delete: Verwijder deze campaign voor eeuwig
+    mailchimp:
+      admin:
+        campaigns:
+          index:
+            create_new: Maak een nieuwe Campagne
+            reorder: Wijzig de volgorde van de Campaigns
+            reorder_done: Klaar met het wijzingen van de volgorde van de Campaigns
+            sorry_no_results: Helaas! Er zijn geen resultaten gevonden.
+            no_items_yet: Er zijn nog geen Campaigns. Druk op 'Maak een nieuwe Campaign' om de eerste aan te maken.
+          campaign:
+            view_live: Bekijk deze campaign op de website <br/><em>(opent een nieuw venster)</em>
+            edit: Bewerk deze campaign
+            delete: Verwijder deze campaign voor eeuwig
     campaigns:
       show:
         other: Andere Campaigns
