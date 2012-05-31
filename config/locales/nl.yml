@@ -2,20 +2,57 @@ nl:
   refinery:
     plugins:
       refinery-mailchimp:
-        title: Campaigns
+        title: Campagnes
     mailchimp:
-      admin:
+        admin:
+          refinery_settings:
+            form:
+              help:
+                mailchimp_api_key: "Get your API key from your Mailchimp dashboard by choosing 'Account' and then 'API Keys & Info.'"
+                mailchimp_default_to_name: "The default To: name recipients will see (not email address). This can be changed for each campaign."
+                mailchimp_default_from_name: "The default From: name for your campaign message (not an email address). This can be changed for each campaign."
+                mailchimp_default_from_email: "The default From: email address for your campaign message. This can be changed for each campaign."
+                mailchimp_admin_base_url: The base URL of your Mailchimp admin area. This is used to generate links to your campaigns for convenience. Only change it if you know what you're doing.
+          campaigns:
+            index:              
+              create_new: Maak een nieuwe campagne
+              reorder: Wijzig de volgorde van de campagnes
+              reorder_done: Klaar met het wijzingen van de volgorde van de campagnes
+              sorry_no_results: Helaas! Er zijn geen resultaten gevonden.
+              no_items_yet: Er zijn nog geen campagnes. Druk op 'Maak een nieuwe campagne' om de eerste aan te maken.
+              set_api_key: Voer een geldige Mailchimp API key in.
+              set_api_link: Klik hier om uw key te updaten.
+            campaign:
+              view_live: Bekijk deze campagne op de website <br/><em>(opent een nieuw venster)</em>
+              edit: Bewerk deze campagne
+              delete: Verwijder deze campaign definitief
+              delete_confirmation: "Weet uw zeker dat u '%{subject}' wilt verwijderen?"
+              mailchimp_error: "Kon niet opslaan bij Mailchimp! Controleer AUB of de API key correct is en of u het juiste afzender email adres gebruikt."
+              send_dialog: "Send, schedule, or test this campaign"
+              send_test_success: Test email is succesvol verzonden naar %{email}.
+              send_test_failure: Test email kon niet verstuurd worden naar %{email}. Controleer of het email adres correct is.
+              send_now_success: De campaign is succesvol verzonden!
+              send_now_failure: The campaign could not be sent. Please check in Mailchimp to make sure everything is ok.
+              schedule_success: The campaign was successfully scheduled.
+              schedule_failure: The campaign could not be scheduled. Please check in Mailchimp to make sure everything is ok.
+              unschedule_success: The campaign was successfully unscheduled.
+              unschedule_failure: The campaign could not be unscheduled. Please check in Mailchimp to make sure everything is ok.
+            form:
+              to_and_from: Ontvanger en afzender
+              settings: Instellingen
+              subject_help: Het onderwerp dat gebruikt word voor de campagne emails.
+              mailchimp_list_id: Mailing lijst
+              mailchimp_list_id_help: De mailing lijst om deze campagne naar toe te sturen. Deze worden beheerd in Mailchimp.
+              mailchimp_template_id: Template
+              mailchimp_template_id_help: Het HTML template om voor deze campagne te gebruiken.to use for this campaign. Deze worden beheerd in Mailchimp.
+              to_name: Ontvanger naam
+              to_name_help: "De naam die de ontvanger zal hebben (niet het email adres). Bij instellingen kan de standaard ingesteld worden."
+              from_name: Afzender naam
+              from_name_help: "De naam van de afzender (niet het email adres). Bij instellingen kan de standaard ingesteld worden."
+              from_email: Afzender email
+              from_email_help: "Het email adres waarvan de campagne word verstuurd. Bij instellingen kan de standaard ingesteld worden."
+              auto_tweet: Auto Tweet
+              auto_tweet_help: Verstuur automatisch een tweet over deze campagne wanneer deze verstuurd word. Hiervoor moet Twitter moet bij Mailchimp ingesteld zijn.
         campaigns:
-          index:
-            create_new: Maak een nieuwe Campagne
-            reorder: Wijzig de volgorde van de Campaigns
-            reorder_done: Klaar met het wijzingen van de volgorde van de Campaigns
-            sorry_no_results: Helaas! Er zijn geen resultaten gevonden.
-            no_items_yet: Er zijn nog geen Campaigns. Druk op 'Maak een nieuwe Campaign' om de eerste aan te maken.
-          campaign:
-            view_live: Bekijk deze campaign op de website <br/><em>(opent een nieuw venster)</em>
-            edit: Bewerk deze campaign
-            delete: Verwijder deze campaign voor eeuwig
-    campaigns:
-      show:
-        other: Andere Campaigns
+          show:
+            other: Andere campagnes
