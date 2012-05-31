@@ -1,7 +1,8 @@
 module Refinery
   module Mailchimp
-    class Campaign < ActiveRecord::Base
-      acts_as_indexed :fields => [:subject, :body]
+    class Campaign < Refinery::Core::BaseModel
+
+      #acts_as_indexed :fields => [:subject, :body]
 
       self.table_name = 'refinery_mailchimp_campaigns'
 
@@ -100,7 +101,7 @@ module Refinery
       end
 
       def halt_with_mailchimp_error
-        self.errors.add :base, I18n.t('refinery.admin.campaigns.campaign.mailchimp_error')
+        self.errors.add :base, ::I18n.t('refinery.mailchimp.admin.campaigns.campaign.mailchimp_error')
         return false
       end
 
