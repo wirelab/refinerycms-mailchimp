@@ -13,13 +13,13 @@ To set up a Refinery app from scratch, you'll need to install Refinery and creat
 Once you have a Refinery app created, add this engine to your Gemfile in the `USER DEFINED` area:
 
     gem 'refinerycms-mailchimp'
-    
+
 Then, from the command line:
 
     bundle install
-    rails generate refinerycms_mailchimp
+    rails generate refinery:mailchimp
     rake db:migrate
-    
+
 ## Settings
 
 You'll need to set up your Mailchimp API key in the Settings area.  [Get your API key here.](https://admin.mailchimp.com/account/api-key-popup)
@@ -40,9 +40,9 @@ This plugin currently only supports one editable text area per campaign.  If you
 Uncomment the following line in your Gemfile:
 
     gem 'refinerycms-testing',    '~> 0.9.9.9'
-    
+
 Then install the testing functionality with
-    
+
     rails generate refinerycms_testing
-    
+
 You can now run all engine specs and features with `rake`, or run them separately with `rake spec` and `rake cucumber`.

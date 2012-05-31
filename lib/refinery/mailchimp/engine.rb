@@ -36,7 +36,7 @@ module Refinery
       class BadAPIKeyError < StandardError; end
 
       def initialize
-        api_key = ::Refinery::Setting.get_or_set KeySetting[:name], KeySetting[:default]
+        api_key = ::Refinery::Mailchimp.api_key
         raise BadAPIKeyError if api_key.blank? || api_key == KeySetting[:default]
 
         begin

@@ -22,10 +22,10 @@ module Refinery
 
         def send_test
           if @campaign.send_test_to params[:email]
-            flash[:notice] = t('admin.campaigns.campaign.send_test_success', :email => params[:email])
+            flash[:notice] = t('refinery.mailchimp.admin.campaigns.campaign.send_test_success', :email => params[:email])
             logger.info "Great Successs !! \n \n \n \n"
           else
-            flash[:alert] = t('admin.campaigns.campaign.send_test_failure', :email => params[:email])
+            flash[:alert] = t('refinery.mailchimp.admin.campaigns.campaign.send_test_failure', :email => params[:email])
             logger.info "Great Failure !! \n \n \n \n"
 
           end
@@ -34,27 +34,27 @@ module Refinery
 
         def send_now
           if @campaign.send_now
-            flash[:notice] = t('admin.campaigns.campaign.send_now_success')
+            flash[:notice] = t('refinery.mailchimp.admin.campaigns.campaign.send_now_success')
           else
-            flash[:alert] = t('admin.campaigns.campaign.send_now_failure')
+            flash[:alert] = t('refinery.mailchimp.admin.campaigns.campaign.send_now_failure')
           end
           sending_redirect_to refinery.mailchimp_admin_campaigns_path
         end
 
         def schedule
           if @campaign.schedule_for DateTime.new(*params['date'].values_at('year','month','day','hour','minute').map{|x|x.to_i})
-            flash[:notice] = t('admin.campaigns.campaign.schedule_success')
+            flash[:notice] = t('refinery.mailchimp.admin.campaigns.campaign.schedule_success')
           else
-            flash[:alert] = t('admin.campaigns.campaign.schedule_failure')
+            flash[:alert] = t('refinery.mailchimp.admin.campaigns.campaign.schedule_failure')
           end
           sending_redirect_to mailchimp_admin_campaigns_path
         end
 
         def unschedule
           if @campaign.unschedule
-            flash[:notice] = t('admin.campaigns.campaign.unschedule_success')
+            flash[:notice] = t('refinery.mailchimp.admin.campaigns.campaign.unschedule_success')
           else
-            flash[:alert] = t('admin.campaigns.campaign.unschedule_failure')
+            flash[:alert] = t('refinery.mailchimp.admin.campaigns.campaign.unschedule_failure')
           end
           sending_redirect_to refinery.mailchimp_admin_campaigns_path
         end
@@ -69,8 +69,7 @@ module Refinery
         end
 
         def need_api_key
-          msg = t('admin.campaigns.index.set_api_key')
-          msg += " <a href=\"#{edit_admin_setting_path(::Refinery::Setting.find_by_name(Refinery::Mailchimp::API::KeySetting[:name])).id}\" style=\"display:inline\">#{t('admin.campaigns.index.set_api_link')}</a>"
+          msg = t('refinery.mailchimp.admin.campaigns.index.set_api_key')
           flash[:alert] = msg.html_safe
           redirect_to refinery.mailchimp_admin_campaigns_path
         end
