@@ -1,3 +1,5 @@
+[![Build Status](https://secure.travis-ci.org/Wirelab/refinerycms-mailchimp.png?branch=master)](http://travis-ci.org/Wirelab/refinerycms-mailchimp)
+
 # Mailchimp engine for Refinery CMS
 
 This project was originally sponsored by Mailchimp!  Many thanks to them for supporting open source development.
