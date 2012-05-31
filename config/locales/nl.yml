@@ -38,6 +38,8 @@ nl:
               unschedule_success: The campaign was successfully unscheduled.
               unschedule_failure: The campaign could not be unscheduled. Please check in Mailchimp to make sure everything is ok.
             form:
+              subject: Onderwerp
+              body: Body
               to_and_from: Ontvanger en afzender
               settings: Instellingen
               subject_help: Het onderwerp dat gebruikt word voor de campagne emails.

@@ -6,14 +6,14 @@
 
   <div class='field'>
     <span class='label_with_help'>
-      <%= f.label :subject -%>
+      <%= f.label :subject, t('.subject') -%>
       <%= refinery_help_tag t('.subject_help') %>
     </span>
     <%= f.text_field :subject, :class => 'larger widest' -%>
   </div>
 
   <div class='field'>
-    <%= f.label :body -%>
+    <%= f.label :body, t('.body') -%>
     <%= f.text_area :body, :rows => 20, :class => 'wymeditor widest' -%>
   </div>
 
