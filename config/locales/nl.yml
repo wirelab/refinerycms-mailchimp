@@ -55,6 +55,10 @@ nl:
               from_email_help: "Het email adres waarvan de campagne word verstuurd. Bij instellingen kan de standaard ingesteld worden."
               auto_tweet: Auto Tweet
               auto_tweet_help: Verstuur automatisch een tweet over deze campagne wanneer deze verstuurd word. Hiervoor moet Twitter moet bij Mailchimp ingesteld zijn.
+        subscriptions:
+          success: Aanmelding was succesvol.
+          invalid_email: Email is ongeldig.
+          unknown_error: Er is een fout opgetreden, probeer het later nog eens.
         campaigns:
           show:
             other: Andere campagnes
