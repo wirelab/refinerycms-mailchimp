@@ -5,6 +5,7 @@ module Refinery
 
   module Mailchimp
     require 'refinery/mailchimp/engine'
+    require 'refinery/mailchimp/configuration'
 
     class << self
       attr_writer :root
