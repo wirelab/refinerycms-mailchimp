@@ -14,7 +14,7 @@ To set up a Refinery app from scratch, you'll need to install Refinery and creat
 
 Once you have a Refinery app created, add this engine to your Gemfile in the `USER DEFINED` area:
 
-    gem 'refinerycms-mailchimp'
+    gem 'refinerycms-mailchimp', :github => 'Wirelab/refinerycms-mailchimp', :branch => 'feature/2.0.0'
 
 Then, from the command line:
 
