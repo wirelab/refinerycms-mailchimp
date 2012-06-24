@@ -12,9 +12,8 @@ module Refinery
         before_filter :fully_qualify_links, :only => [:create, :update]
 
         def new
-          @campaign = ::Refinery::Mailchimp::Campaign.new :to_name => ::Refinery::Setting.get_or_set(Refinery::Mailchimp::API::DefaultToNameSetting[:name], Refinery::Mailchimp::API::DefaultToNameSetting[:default]),
-                                  :from_name => ::Refinery::Setting.get_or_set(Refinery::Mailchimp::API::DefaultFromNameSetting[:name], Refinery::Mailchimp::API::DefaultFromNameSetting[:default]),
-                                  :from_email => ::Refinery::Setting.get_or_set(Refinery::Mailchimp::API::DefaultFromEmailSetting[:name], Refinery::Mailchimp::API::DefaultFromEmailSetting[:default])
+          @campaign = ::Refinery::Mailchimp::Campaign.new :from_name => ::Refinery::Setting.get_or_set(Refinery::Mailchimp::API::DefaultFromNameSetting[:name], Refinery::Mailchimp::API::DefaultFromNameSetting[:default]),
+                                                          :from_email => ::Refinery::Setting.get_or_set(Refinery::Mailchimp::API::DefaultFromEmailSetting[:name], Refinery::Mailchimp::API::DefaultFromEmailSetting[:default])
         end
 
         def send_options
