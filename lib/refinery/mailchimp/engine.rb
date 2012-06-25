@@ -31,7 +31,6 @@ module Refinery
       KeySetting = { :name => "mailchimp_api_key", :default => "Set me!" }
       DefaultFromNameSetting = { :name => "mailchimp_default_from_name", :default => "" }
       DefaultFromEmailSetting = { :name => "mailchimp_default_from_email", :default => "" }
-      DefaultToNameSetting = { :name => "mailchimp_default_to_name", :default => "" }
 
       class BadAPIKeyError < StandardError; end
 

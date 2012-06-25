@@ -40,7 +40,7 @@ nl:
             form:
               subject: Onderwerp
               body: Body
-              to_and_from: Ontvanger en afzender
+              from: Afzender
               settings: Instellingen
               subject_help: Het onderwerp dat gebruikt word voor de campagne emails.
               mailchimp_list_id: Mailing lijst
