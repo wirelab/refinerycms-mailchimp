@@ -12,11 +12,11 @@
     <%= link_to refinery_icon_tag("application_edit.png"), refinery.edit_mailchimp_admin_campaign_path(campaign),
          :subject => t('.edit') %>
     <%= link_to refinery_icon_tag("email_go.png"), refinery.send_options_mailchimp_admin_campaign_path(campaign, :dialog => true, :width => 725, :height => 525),
-        :title => t('send_dialog', :scope => 'admin.campaigns.campaign') %>
+        :title => t('send_dialog', :scope => 'refinery.mailchimp.admin.campaigns.campaign') %>
     <%= link_to refinery_icon_tag("delete.png"), refinery.mailchimp_admin_campaign_path(campaign),
         :class => "cancel confirm-delete",
         :subject => t('.delete'),
-        :'data-confirm' => t('admin.campaigns.campaign.delete_confirmation', :subject => campaign.subject),
+        :'data-confirm' => t('refinery.mailchimp.admin.campaigns.campaign.delete_confirmation', :subject => campaign.subject),
         :'data-method' => :delete %>
   </span>
 </li>
