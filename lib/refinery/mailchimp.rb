@@ -1,4 +1,5 @@
 require 'refinerycms-core'
+require 'refinerycms-settings'
 
 module Refinery
   autoload :MailchimpGenerator, 'generators/refinery/mailchimp/mailchimp_generator'
