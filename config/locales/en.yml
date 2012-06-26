@@ -55,6 +55,10 @@ en:
               from_email_help: "The From: email address for your campaign message. You can change the default in Settings."
               auto_tweet: Auto Tweet
               auto_tweet_help: Automatically tweet about this campaign when sent. Requires setting up Twitter from Mailchimp.
+        subscriptions:
+          success: Subscription was succesful.
+          invalid_email: Email address is invalid.
+          unknown_error: An error has occured, try again later.
         campaigns:
           show:
             other: Other Campaigns
