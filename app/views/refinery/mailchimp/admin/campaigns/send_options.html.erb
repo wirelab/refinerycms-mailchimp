@@ -26,7 +26,7 @@
   <p>This will send the campaign.</p>
   <%= form_tag refinery.send_now_mailchimp_admin_campaign_path(@campaign) do -%>
     <%= render :partial => "modal_fields" %>
-    <%= submit_tag "Send Now"%>
+    <%= submit_tag "Send Now", :confirm => "You're about to email all the subscribers on your list, are you sure?"%>
   <% end %>
 
   <h2>Schedule Campaign for Later</h2>
