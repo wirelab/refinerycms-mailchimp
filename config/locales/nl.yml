@@ -55,6 +55,9 @@ nl:
               from_email_help: "Het email adres waarvan de campagne word verstuurd. Bij instellingen kan de standaard ingesteld worden."
               auto_tweet: Auto Tweet
               auto_tweet_help: Verstuur automatisch een tweet over deze campagne wanneer deze verstuurd word. Hiervoor moet Twitter moet bij Mailchimp ingesteld zijn.
+            send_options:
+              submit_now: Nu versturen
+              submit_confirm: Weet u zeker dat u de campagne wilt versturen naar alle mensen in uw lijst?
         subscriptions:
           success: Aanmelding was succesvol.
           invalid_email: Email is ongeldig.

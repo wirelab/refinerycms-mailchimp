@@ -55,6 +55,9 @@ en:
               from_email_help: "The From: email address for your campaign message. You can change the default in Settings."
               auto_tweet: Auto Tweet
               auto_tweet_help: Automatically tweet about this campaign when sent. Requires setting up Twitter from Mailchimp.
+            send_options:
+              submit_now: Submit now
+              submit_confirm: You're about to email all the subscribers on your list, are you sure?
         subscriptions:
           success: Subscription was succesful.
           invalid_email: Email address is invalid.
