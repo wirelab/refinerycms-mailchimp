@@ -1,40 +1,40 @@
 <% if @campaign.sent? %>
-  <h2>Sent</h2>
+  <h2><%= t('sent', :scope => 'refinery.mailchimp.shared') %></h2>
   <p>
-    This campaign was sent <strong title="<%= @campaign.sent_at %>"><%= distance_of_time_in_words_to_now(@campaign.sent_at) %> ago</strong>.
+    <%= t('sent', :scope => 'refinery.mailchimp.shared') %> <strong title="<%= @campaign.sent_at %>"><%= distance_of_time_in_words_to_now(@campaign.sent_at) %> <%= t('ago', :scope => 'refinery.mailchimp.shared') %></strong>.
   </p>
 <% elsif @campaign.scheduled? %>
-  <h2>Scheduled</h2>
+  <h2><%= t('.campaign_scheduled_title') %></h2>
   <p>
-    This campaign is scheduled to be sent in <strong title="<%= @campaign.scheduled_at %>"><%= distance_of_time_in_words_to_now(@campaign.scheduled_at) %></strong>.
+    <%= t('.campaign_scheduled_explanation') %> <strong title="<%= @campaign.scheduled_at %>"><%= distance_of_time_in_words_to_now(@campaign.scheduled_at) %></strong>.
   </p>
   <%= form_tag efinery.unschedule_mailchimp_admin_campaign_path(@campaign) do -%>
     <%= render :partial => "modal_fields" %>
-    <%= submit_tag "Unschedule Campaign"%>
+    <%= submit_tag t('.unschedule_campaign') %>
   <% end %>
 <% else %>
-  <h2>Send Test Email</h2>
-  <p>This will send a test email to the email address you enter below.</p>
+  <h2><%= t('.send_test_email_title') %></h2>
+  <p><%= t('.send_test_email_explanation') %></p>
   <%= form_tag refinery.send_test_mailchimp_admin_campaign_path(@campaign) do -%>
     <%= render :partial => "modal_fields" %>
     <%= label_tag :email %>
     <%= text_field_tag :email, "test@test.nl" %>
-    <%= submit_tag "Send Test" %>
+    <%= submit_tag t('.send_test') %>
   <% end %>
 
-  <h2>Send Campaign Now</h2>
-  <p>This will send the campaign.</p>
+  <h2><%= t('.send_campaign_title') %></h2>
+  <p><%= t('.send_campaign_explanation') %></p>
   <%= form_tag refinery.send_now_mailchimp_admin_campaign_path(@campaign) do -%>
     <%= render :partial => "modal_fields" %>
     <%= submit_tag t('.submit_now'), :confirm => t('.submit_confirm')%>
   <% end %>
 
-  <h2>Schedule Campaign for Later</h2>
-  <p>This will schedule the campaign to be sent automatically at a future date.</p>
+  <h2><%= t('.schedule_campaign_title') %></h2>
+  <p><%= t('.schedule_campaign_explanation') %></p>
   <%= form_tag refinery.schedule_mailchimp_admin_campaign_path(@campaign) do -%>
     <%= render :partial => "modal_fields" %>
     <%= label_tag :send_at %>
     <%= select_datetime %>
-    <%= submit_tag "Schedule Campaign"%>
+    <%= submit_tag t('.schedule_campaign') %>
   <% end %>
 <% end %>

@@ -3,7 +3,7 @@
     <%= campaign.subject %>
 
     <% if campaign.sent? %>
-      <span class="preview" title="<%= campaign.sent %>">sent <%= distance_of_time_in_words_to_now(campaign.sent) %> ago</span>
+      <span class="preview" title="<%= campaign.sent %>"><%= "#{t('sent', :scope => 'refinery.mailchimp.shared').downcase} #{distance_of_time_in_words_to_now(campaign.sent)} #{t('ago', :scope => 'refinery.mailchimp.shared')}." %></span>
     <% elsif campaign.scheduled? %>
       <span class="preview" title="<%= campaign.scheduled_at %>">sending in <%= distance_of_time_in_words_to_now(campaign.scheduled_at) %></span>
     <% end %>
