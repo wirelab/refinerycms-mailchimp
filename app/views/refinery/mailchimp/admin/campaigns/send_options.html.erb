@@ -8,30 +8,30 @@
   <p>
     This campaign is scheduled to be sent in <strong title="<%= @campaign.scheduled_at %>"><%= distance_of_time_in_words_to_now(@campaign.scheduled_at) %></strong>.
   </p>
-  <%= form_tag unschedule_admin_campaign_path(@campaign) do -%>
+  <%= form_tag efinery.unschedule_mailchimp_admin_campaign_path(@campaign) do -%>
     <%= render :partial => "modal_fields" %>
     <%= submit_tag "Unschedule Campaign"%>
   <% end %>
 <% else %>
   <h2>Send Test Email</h2>
   <p>This will send a test email to the email address you enter below.</p>
-  <%= form_tag send_test_admin_campaign_path(@campaign) do -%>
+  <%= form_tag refinery.send_test_mailchimp_admin_campaign_path(@campaign) do -%>
     <%= render :partial => "modal_fields" %>
     <%= label_tag :email %>
-    <%= text_field_tag :email, current_user.email %>
+    <%= text_field_tag :email, "test@test.nl" %>
     <%= submit_tag "Send Test" %>
   <% end %>
-  
+
   <h2>Send Campaign Now</h2>
   <p>This will send the campaign.</p>
-  <%= form_tag send_now_admin_campaign_path(@campaign) do -%>
+  <%= form_tag refinery.send_now_mailchimp_admin_campaign_path(@campaign) do -%>
     <%= render :partial => "modal_fields" %>
     <%= submit_tag "Send Now"%>
   <% end %>
-  
+
   <h2>Schedule Campaign for Later</h2>
   <p>This will schedule the campaign to be sent automatically at a future date.</p>
-  <%= form_tag schedule_admin_campaign_path(@campaign) do -%>
+  <%= form_tag refinery.schedule_mailchimp_admin_campaign_path(@campaign) do -%>
     <%= render :partial => "modal_fields" %>
     <%= label_tag :send_at %>
     <%= select_datetime %>

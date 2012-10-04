@@ -1,6 +1,10 @@
-User.find(:all).each do |user|
-  user.plugins.create(:name => "campaigns",
-                      :position => (user.plugins.maximum(:position) || -1) +1)
+if defined?(::Refinery::User)
+  ::Refinery::User.all.each do |user|
+    if user.plugins.where(:name => 'refinerycms-mailchimp').blank?
+      user.plugins.create(:name => 'refinerycms-mailchimp',
+                          :position => (user.plugins.maximum(:position) || -1) +1)
+    end
+  end
 end
 
 RefinerySetting.create :name => Refinery::Mailchimp::API::KeySetting[:name],              :value => Refinery::Mailchimp::API::KeySetting[:default],              :restricted => true

@@ -1,25 +1,25 @@
-<% form_for [:admin, @campaign] do |f| -%>
-  <%= render :partial => "/shared/admin/error_messages", :locals => {
+<%= form_for [refinery, :mailchimp_admin, @campaign] do |f| -%>
+  <%= render :partial => "/refinery/admin/error_messages", :locals => {
     :object => @campaign,
     :include_object_name => true
   } %>
-  
+
   <div class='field'>
     <span class='label_with_help'>
-      <%= f.label :subject -%>
+      <%= f.label :subject, t('.subject') -%>
       <%= refinery_help_tag t('.subject_help') %>
     </span>
     <%= f.text_field :subject, :class => 'larger widest' -%>
   </div>
-  
+
   <div class='field'>
-    <%= f.label :body -%>
+    <%= f.label :body, t('.body') -%>
     <%= f.text_area :body, :rows => 20, :class => 'wymeditor widest' -%>
   </div>
 
   <div class="hemisquare">
     <h2><%= t('.to_and_from') %></h2>
-    
+
     <div class='field'>
       <span class='label_with_help'>
         <%= f.label :to_name, t('.to_name') -%>
@@ -27,7 +27,7 @@
       </span>
       <%= f.text_field :to_name %>
     </div>
-    
+
     <div class='field'>
       <span class='label_with_help'>
         <%= f.label :from_name, t('.from_name') -%>
@@ -35,7 +35,7 @@
       </span>
       <%= f.text_field :from_name %>
     </div>
-    
+
     <div class='field'>
       <span class='label_with_help'>
         <%= f.label :from_email, t('.from_email') -%>
@@ -47,7 +47,7 @@
 
   <div class="hemisquare right_side">
     <h2><%= t('.settings') %></h2>
-    
+
     <div class='field'>
       <span class='label_with_help'>
         <%= f.label :mailchimp_list_id, t('.mailchimp_list_id') -%>
@@ -55,7 +55,7 @@
       </span>
       <%= f.select :mailchimp_list_id, @lists.collect{ |list| [list['name'], list['id']] } %>
     </div>
-    
+
     <div class='field'>
       <span class='label_with_help'>
         <%= f.label :mailchimp_template_id, t('.mailchimp_template_id') -%>
@@ -63,7 +63,7 @@
       </span>
       <%= f.select :mailchimp_template_id, @templates.collect{ |template| [template['name'], template['id']] }, :include_blank => true %>
     </div>
-    
+
     <div class='field'>
       <span class='label_with_help'>
         <%= f.label :auto_tweet, t('.auto_tweet') -%>
@@ -72,14 +72,21 @@
       <%= f.check_box :auto_tweet %>
     </div>
   </div>
-  
+
   <div class="clearfix"></div>
 
-  <%= render :partial => "/shared/admin/form_actions",
+  <%= render :partial => "/refinery/admin/form_actions",
               :locals => {
                 :f => f,
                 :continue_editing => false,
-                :delete_subject => t('admin.campaigns.campaign.delete'),
-                :delete_confirmation => t('admin.campaigns.campaign.delete_confirmation', :subject => @campaign.subject)
+                :delete_subject => t('delete', :scope => 'refinery.mailchimp.admin.campaigns.campaign.delete'),
+                :delete_confirmation => t('message', :scope => 'refinery.admin.de;ete', :subject => @campaign.subject)
               } %>
 <% end -%>
+<% content_for :javascripts do %>
+  <script>
+    $(document).ready(function(){
+      page_options.init(false, '', '');
+    });
+  </script>
+<% end %>

@@ -1,7 +1,7 @@
 class CreateCampaigns < ActiveRecord::Migration
-  
-  def self.up
-    create_table :campaigns do |t|
+
+  def up
+    create_table :refinery_mailchimp_campaigns do |t|
       t.string :subject, :mailchimp_campaign_id, :mailchimp_list_id, :mailchimp_template_id, :from_email, :from_name, :to_name
       t.text :body
       t.datetime :sent_at, :scheduled_at
@@ -9,17 +9,19 @@ class CreateCampaigns < ActiveRecord::Migration
       t.timestamps
     end
 
-    add_index :campaigns, :id
-
-    load(Rails.root.join('db', 'seeds', 'campaigns.rb'))
+    add_index :refinery_mailchimp_campaigns, :id
   end
 
   def self.down
-    UserPlugin.destroy_all({:name => "Campaigns"})
+    if defined?(::Refinery::UserPlugin)
+      ::Refinery::UserPlugin.destroy_all({:name => "refinerycms-mailchimp"})
+    end
 
-    Page.delete_all({:link_url => "/campaigns"})
+    if defined?(::Refinery::Page)
+      ::Refinery::Page.delete_all({:link_url => "/campaigns"})
+    end
 
-    drop_table :campaigns
+    drop_table :refinery_mailchimp_campaigns
   end
 
 end
