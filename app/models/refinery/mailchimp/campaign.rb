@@ -6,9 +6,9 @@ module Refinery
 
       self.table_name = 'refinery_mailchimp_campaigns'
 
-      attr_accessible :to_name, :from_name, :from_email, :subject, :body, :mailchimp_list_id, :mailchimp_template_id, :auto_tweet
+      attr_accessible :from_name, :from_email, :subject, :body, :mailchimp_list_id, :mailchimp_template_id, :auto_tweet
 
-      validates_presence_of :subject, :body, :mailchimp_list_id, :from_email, :from_name, :to_name
+      validates_presence_of :subject, :body, :mailchimp_list_id, :from_email, :from_name
 
       before_save :update_mailchimp_campaign
       before_create :create_mailchimp_campaign
@@ -63,17 +63,15 @@ module Refinery
     protected
 
       def create_mailchimp_campaign
-        options = { :subject => subject, :from_email => from_email, :from_name => from_name, :to_name => to_name, :list_id => mailchimp_list_id, :auto_tweet => auto_tweet }
+        options = { :subject => subject, :from_email => from_email, :from_name => from_name, :list_id => mailchimp_list_id, :auto_tweet => auto_tweet }
         options[:template_id] = mailchimp_template_id unless mailchimp_template_id.blank?
-        # options[:analytics] = { :google => google_analytics } unless google_analytics.blank?
-
+        
         self.mailchimp_campaign_id = begin
           Refinery::Mailchimp::API.new.campaign_create 'regular', options, { content_key => body }
-        rescue Hominid::APIError
-          nil
+        rescue Hominid::APIError => e
+          halt_with_mailchimp_error e
+          return false
         end
-
-        return halt_with_mailchimp_error if self.mailchimp_campaign_id.blank?
       end
 
       def update_mailchimp_campaign
@@ -81,11 +79,14 @@ module Refinery
 
         client = Refinery::Mailchimp::API.new
 
-        options = {:title => :subject, :from_email => :from_email, :from_name => :from_name, :to_name => :to_name, :list_id => :mailchimp_list_id, :template_id => :mailchimp_template_id, :content => :body, :auto_tweet => :auto_tweet }
+        options = {:title => :subject, :from_email => :from_email, :from_name => :from_name, :list_id => :mailchimp_list_id, :template_id => :mailchimp_template_id, :content => :body, :auto_tweet => :auto_tweet }
         options.each_pair do |option_name, attribute|
           if changed.include?(attribute.to_s)
-            success = client.campaign_update mailchimp_campaign_id, option_name, (option_name == :content ? { content_key => body } : self.send(attribute))
-            return halt_with_mailchimp_error unless success
+            begin 
+              success = client.campaign_update mailchimp_campaign_id, option_name, (option_name == :content ? { content_key => body } : self.send(attribute))
+            rescue Hominid::APIError => e
+              return halt_with_mailchimp_error e
+            end
           end
         end
       end
@@ -100,8 +101,8 @@ module Refinery
         return halt_with_mailchimp_error unless success
       end
 
-      def halt_with_mailchimp_error
-        self.errors.add :base, ::I18n.t('refinery.mailchimp.admin.campaigns.campaign.mailchimp_error')
+      def halt_with_mailchimp_error error
+        self.errors.add :base, error.message
         return false
       end
 

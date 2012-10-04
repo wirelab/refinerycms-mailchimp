@@ -25,12 +25,12 @@ nl:
             campaign:
               view_live: Bekijk deze campagne op de website <br/><em>(opent een nieuw venster)</em>
               edit: Bewerk deze campagne
-              delete: Verwijder deze campaign definitief
+              delete: Verwijder deze campagne definitief
               delete_confirmation: "Weet uw zeker dat u '%{subject}' wilt verwijderen?"
               mailchimp_error: "Kon niet opslaan bij Mailchimp! Controleer AUB of de API key correct is en of u het juiste afzender email adres gebruikt."
-              send_dialog: "Send, schedule, or test this campaign"
+              send_dialog: "Verstuur, plan, of test deze campagne"
               send_test_success: Test email is succesvol verzonden naar %{email}.
-              send_test_failure: Test email kon niet verstuurd worden naar %{email}. Controleer of het email adres correct is.
+              send_test_failure: Test email kon niet verstuurt worden naar %{email}. Controleer of het email adres correct is.
               send_now_success: De campaign is succesvol verzonden!
               send_now_failure: The campaign could not be sent. Please check in Mailchimp to make sure everything is ok.
               schedule_success: The campaign was successfully scheduled.
@@ -40,7 +40,7 @@ nl:
             form:
               subject: Onderwerp
               body: Body
-              to_and_from: Ontvanger en afzender
+              from: Afzender
               settings: Instellingen
               subject_help: Het onderwerp dat gebruikt word voor de campagne emails.
               mailchimp_list_id: Mailing lijst
@@ -52,9 +52,30 @@ nl:
               from_name: Afzender naam
               from_name_help: "De naam van de afzender (niet het email adres). Bij instellingen kan de standaard ingesteld worden."
               from_email: Afzender email
-              from_email_help: "Het email adres waarvan de campagne word verstuurd. Bij instellingen kan de standaard ingesteld worden."
+              from_email_help: "Het email adres waarvan de campagne word verstuurt. Bij instellingen kan de standaard ingesteld worden."
               auto_tweet: Auto Tweet
-              auto_tweet_help: Verstuur automatisch een tweet over deze campagne wanneer deze verstuurd word. Hiervoor moet Twitter moet bij Mailchimp ingesteld zijn.
+              auto_tweet_help: Verstuur automatisch een tweet over deze campagne wanneer deze verstuurt word. Hiervoor moet Twitter moet bij Mailchimp ingesteld zijn.
+            send_options:
+              campaign_scheduled_title: Ingeplanned
+              campaign_scheduled_explanation: Deze campagne is geplanned om verstuurt te worden in
+              schedule_campaign: Plan campagne
+              schedule_campaign_title: Plan campagne voor later
+              schedule_campaign_explanation: Dit zal de campagne inplannen om automatisch verstuurt te worden.
+              send_campaign_title: Verstuur campagne nu
+              send_campaign_explanation: Dit verstuurt de campagne.
+              send_test: Verstuur test
+              send_test_email_title: Verstuur test email
+              send_test_email_explanation: Dit verstuur een test naar het hier onder ingevoerde email adres.
+              submit_now: Nu versturen
+              submit_confirm: Weet u zeker dat u de campagne wilt versturen naar alle mensen in uw lijst?
+              unschedule_campaign: Campagne uit planning verwijderen
+        shared:
+          ago: geleden
+          sent: Verstuurt
+        subscriptions:
+          success: Aanmelding was succesvol.
+          invalid_email: Email is ongeldig.
+          unknown_error: Er is een fout opgetreden, probeer het later nog eens.
         campaigns:
           show:
             other: Andere campagnes

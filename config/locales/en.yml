@@ -55,6 +55,27 @@ en:
               from_email_help: "The From: email address for your campaign message. You can change the default in Settings."
               auto_tweet: Auto Tweet
               auto_tweet_help: Automatically tweet about this campaign when sent. Requires setting up Twitter from Mailchimp.
+            send_options:
+              campaign_scheduled_title: Scheduled
+              campaign_scheduled_explanation: This campaign is scheduled to be sent in
+              schedule_campaign: Schedule Campaign
+              schedule_campaign_title: Schedule Campaign for Later
+              schedule_campaign_explanation: This will schedule the campaign to be sent automatically at a future date.
+              send_campaign_title: Send Campaign Now
+              send_campaign_explanation: This will send the campaign.
+              send_test: Send Test
+              send_test_email_title: Send Test Email
+              send_test_email_explanation: This will send a test email to the email address you enter below.
+              submit_now: Submit now
+              submit_confirm: You're about to email all the subscribers on your list, are you sure?
+              unschedule_campaign: Unschedule Campaign
+        shared:
+          ago: ago
+          sent: Sent
+        subscriptions:
+          success: Subscription was succesful.
+          invalid_email: Email address is invalid.
+          unknown_error: An error has occured, try again later.
         campaigns:
           show:
             other: Other Campaigns

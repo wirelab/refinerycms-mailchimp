@@ -2,6 +2,7 @@ module Refinery
   module Mailchimp
     module Admin
       class CampaignsController < ::Refinery::AdminController
+        respond_to :html
         crudify :'refinery/mailchimp/campaign', :title_attribute => 'subject', :xhr_paging => true, :sortable => false
 
         rescue_from Refinery::Mailchimp::API::BadAPIKeyError, :with => :need_api_key
@@ -12,9 +13,19 @@ module Refinery
         before_filter :fully_qualify_links, :only => [:create, :update]
 
         def new
-          @campaign = ::Refinery::Mailchimp::Campaign.new :to_name => ::Refinery::Setting.get_or_set(Refinery::Mailchimp::API::DefaultToNameSetting[:name], Refinery::Mailchimp::API::DefaultToNameSetting[:default]),
-                                  :from_name => ::Refinery::Setting.get_or_set(Refinery::Mailchimp::API::DefaultFromNameSetting[:name], Refinery::Mailchimp::API::DefaultFromNameSetting[:default]),
-                                  :from_email => ::Refinery::Setting.get_or_set(Refinery::Mailchimp::API::DefaultFromEmailSetting[:name], Refinery::Mailchimp::API::DefaultFromEmailSetting[:default])
+          @campaign = ::Refinery::Mailchimp::Campaign.new :from_name => ::Refinery::Setting.get_or_set(Refinery::Mailchimp::API::DefaultFromNameSetting[:name], Refinery::Mailchimp::API::DefaultFromNameSetting[:default]),
+                                                          :from_email => ::Refinery::Setting.get_or_set(Refinery::Mailchimp::API::DefaultFromEmailSetting[:name], Refinery::Mailchimp::API::DefaultFromEmailSetting[:default])
+        end
+        
+        def create
+          @campaign = Campaign.create(params[:campaign])
+          
+          if @campaign.save
+            flash[:notice] = t('refinery.crudify.created', :what => "'#{@campaign.subject}'")
+            respond_with(@campaign, :status => :created, :location => refinery.mailchimp_admin_campaigns_path) 
+          else
+            respond_with(@campaign, :status => :unprocessable_entity) 
+          end
         end
 
         def send_options
