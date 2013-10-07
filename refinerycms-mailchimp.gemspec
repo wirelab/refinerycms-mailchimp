@@ -6,7 +6,6 @@ Gem::Specification.new do |s|
   s.homepage          = %q{https://github.com/ianterrell/refinerycms-mailchimp}
   s.version           = %q{0.1.0}
   s.description       = %q{Ruby on Rails Mailchimp engine for Refinery CMS.  Manage your campaigns right from the admin!}
-  s.date              = "#{Date.today.strftime("%Y-%m-%d")}"
   s.summary           = %q{Ruby on Rails Mailchimp engine for Refinery CMS}
   s.require_paths     = %w(lib)
   #s.files             = `git ls-files`.split("\n")
